@@ -19,6 +19,9 @@ shopt -s autocd
 
 alias vim="nvim"
 
+# alias for ESP-IDF Path Variables
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
 export NVM_DIR="/home/poli/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
