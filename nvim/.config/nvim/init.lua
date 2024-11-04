@@ -110,6 +110,12 @@ vim.opt.mouse = "a"
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
+-- Tab settings
+--vim.opt.expandtab = false -- Use a real tab instead of spaces
+--vim.opt.tabstop = 4 -- Number of spaces per tab
+--vim.opt.shiftwidth = 4 -- independention amount for auto-indent
+--vim.opt.softtabstop = 4 -- Makes backspace feel consistent
+
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'` ***need to make sure xclip install***
@@ -571,7 +577,9 @@ require("lazy").setup({
 			--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 			local servers = {
 				clangd = {},
+				cmake = {},
 				-- gopls = {},
+				-- hdl_checker = {},
 				pyright = {},
 				-- rust_analyzer = {},
 				-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -688,12 +696,14 @@ require("lazy").setup({
 					-- `friendly-snippets` contains a variety of premade snippets.
 					--    See the README about individual language/framework/plugin snippets:
 					--    https://github.com/rafamadriz/friendly-snippets
-					-- {
-					--   'rafamadriz/friendly-snippets',
-					--   config = function()
-					--     require('luasnip.loaders.from_vscode').lazy_load()
-					--   end,
-					-- },
+					{
+						--"saadparwaiz1/cmp_luasnip",
+						"rafamadriz/friendly-snippets",
+						config = function()
+							require("luasnip.loaders.from_vscode").lazy_load()
+							require("luasnip.loaders.from_lua").lazy_load({ paths = { "~/.config/nvim/my_snippets" } })
+						end,
+					},
 				},
 			},
 			"saadparwaiz1/cmp_luasnip",
@@ -707,6 +717,7 @@ require("lazy").setup({
 		config = function()
 			-- See `:help cmp`
 			local cmp = require("cmp")
+			-- require("luasnip.loaders.from_vscode").lazy_load()
 			local luasnip = require("luasnip")
 			luasnip.config.setup({})
 
