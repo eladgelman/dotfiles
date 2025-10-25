@@ -1,0 +1,145 @@
+@import url("file:///home/eladgelman/.cache/wal/colors-gtk.css");
+/* -- Global rules -- */
+
+* {
+  border: none;
+  font-family: "Firacode Nerd Font";
+  font-size: 15px;
+  min-height: 10px;
+}
+
+window#waybar {
+  background: rgba(34, 36, 54, 0.6);
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+/* - Genera rules for visible modules -- */
+#battery,
+#custom-archicon,
+#clock,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#idle_inhibitor,
+#pulseaudio,
+#pulseaudio-slider,
+#network,
+#language {
+  color: #161320;
+  margin-top: 6px;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  transition: none;
+}
+
+/* Separation to the left */
+#cpu,
+#idle_inhibitor {
+  margin-left: 5px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/* Separation to the rigth */
+#clock,
+#temperature
+{
+  margin-right: 5px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+/* -- Specific styles -- */
+
+/* Modules left */
+
+
+
+
+#cpu {
+  background: #eebebe;
+}
+
+#memory {
+  background: #f4b8e4;
+}
+
+
+#temperature {
+  background: #ca9ee6;
+}
+
+/* Modules center */
+#workspaces {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  margin: 6px 5px;
+  padding: 0px 6px;
+}
+
+#workspaces button {
+  color: #c6d0f5;
+  background: transparent;
+  padding: 4px 4px;
+  transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* #workspaces button.occupied { */
+/*   color: #A6E3A1; */
+/* } */
+/**/
+/* #workspaces button.active { */
+/*   color: #89B4FA; */
+/*   text-shadow: 0 0 4px #ABE9B3; */
+/* } */
+
+
+
+
+
+
+
+/* Modules right */
+#idle_inhibitor {
+  background: #ea999c;
+  padding-right: 15px;
+}
+
+
+#language {
+  background: #ef9f76;
+  padding-right: 15px;
+}
+
+#battery {
+  background: #e5c890;
+  padding-right: 15px;
+}
+
+#network {
+  background: #a6d189;
+  padding-right: 13px;
+}
+
+#pulseaudio {
+  min-width: 55px;
+  color: #1A1826;
+  background: #81c8be;
+}
+
+#clock {
+  background: #99d1db;
+}
+
+/* === Optional animation === */
+@keyframes blink {
+  to {
+    background-color: #BF616A;
+    color: #B5E8E0;
+  }
+}

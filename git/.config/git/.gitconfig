@@ -1,0 +1,11 @@
+[user]
+	name = Elad Gelman
+	email = 133428754+eladgelman@users.noreply.github.com
+[core]
+	editor = nvim
+	autocrlf = input # keep LF ending on linux
+	excludesfile = ~/.gitignore_global
+[color]
+	ui = auto
+[init]
+	defaultBranch = main

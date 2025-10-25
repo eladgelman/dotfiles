@@ -1,30 +1,41 @@
-#
-# ~/.bashrc
-#
+# .bashrc
 
-# If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+    . /etc/bashrc
+fi
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-#PS1='[\u@\h \W]\$ '
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+export PATH
 
-HISTTIMEFORMAT="%F %T "
 
-export PS1="\[\e[38;5;33m\]\u\[\e[38;5;69m\]@\[\e[38;5;105m\]\h \[\e[38;5;141m\]\w \[\033[0m\]$ "
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
 
-set -o vi
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+    for rc in ~/.bashrc.d/*; do
+        if [ -f "$rc" ]; then
+            . "$rc"
+        fi
+    done
+fi
+unset rc
+. "$HOME/.cargo/env"
 
-shopt -s autocd
+# streamlink alias for twitch mpv
+twitch() {
+	if [ -z "$1" ]; then
+		echo  "Usage: twitch <username>"
+		return 1
+	fi
+	streamlink --player mpv $1 best
+}
 
-alias vim="nvim"
-
-# alias for ESP-IDF Path Variables
-alias get_idf='. $HOME/esp/esp-idf/export.sh'
-
-export NVM_DIR="/home/poli/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-#initialize startship pormpt
-eval "$(starship init bash)"
-
+# set nvim as main editor
+export EDITOR="/usr/bin/nvim"
+# for git config directory
+export XDG_CONFIG_HOME="$HOME/.config"
